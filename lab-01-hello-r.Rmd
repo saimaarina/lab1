@@ -67,34 +67,42 @@ The data is visualized in a plot to show a non-linear relationship between the x
 
 ### Exercise 3
 
-This is your turn to write the code and narrative for the star dataset. Follow the same steps as above to complete the analysis. Don't forget to label your chunks appropriately!
-
-Note that the R chunks are labeled with `plot-star` and `cor-star` to provide spaces to place the code for plotting and calculating the correlation coefficient.
-To finish, clean up the narrative by removing these instructions.
-
 ```{r plot-star}
+star_data <- datasaurus_dozen %>%
+   filter(dataset == "star")
 
+ggplot(data = star_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 ```
 
-I'm some filler text, you should replace me with more meaningful text...
+After the data is visualized, it can be seen in the shape of a star.
 
 ```{r cor-star}
-
+star_data %>%
+  summarize(r = cor(x, y))
 ```
-Add your explanation here—what did you notice?
+The correlation coefficient is -0.06, but is insignificant as the relationship observed from the star data is non-linear. 
 
 
 ### Exercise 4
 
 Add your code and narrative to complete this exercise. Use the conventions from the previous exercises to name your chunks and organize your work.
 
-```{r}
+```{r plot-cirlce}
+circle_data <- datasaurus_dozen %>%
+   filter(dataset == "circle")
 
+ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 ```
 
-```{r}
+The data from the star dataset is visible in the plot above in the shape of a circle. 
 
+```{r cor-circle}
+circle_data %>%
+  summarize(r = cor(x, y))
 ```
+The correlation coefficient of the circle dataset is -0.06, but also insignificant as the relationship is non-linear. 
 
 ### Exercise 5
 
